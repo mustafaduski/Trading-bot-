@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Terminal | Live Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        body { background-color: #020617; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .neon-text { text-shadow: 0 0 10px rgba(6, 182, 212, 0.5); font-family: 'Orbitron', sans-serif; }
+        .chart-container { height: 450px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(6, 182, 212, 0.2); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="flex justify-between items-center mb-8 glass p-6 rounded-3xl">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                <i data-lucide="activity" class="text-black w-7 h-7"></i>
+            </div>
+            <div>
+                <h1 class="neon-text text-xl text-cyan-400">QUANTUM TERMINAL</h1>
+                <p class="text-[10px] text-gray-500 tracking-[0.2em]">INSTITUTIONAL ALGO V1.0</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right hidden md:block">
+                <p class="text-[10px] text-gray-500">LIVE CONNECTION</p>
+                <p class="text-green-400 font-mono text-sm">CONNECTED TO BINANCE</p>
+            </div>
+            <button class="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-cyan-400 transition-all">Connect</button>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-3 space-y-6">
+            <div class="glass p-6 rounded-3xl">
+                <h3 class="text-xs font-bold text-gray-500 mb-4 tracking-widest text-right">مێژووی قازانج</h3>
+                <div class="text-3xl font-mono text-cyan-400">+$4,290.15</div>
+                <div class="text-[10px] text-green-500 mt-1">▲ 12.4% لە ٢٤ کاتژمێری ڕابردوو</div>
+            </div>
+
+            <div class="glass p-6 rounded-3xl">
+                <h3 class="text-xs font-bold text-gray-500 mb-6 tracking-widest text-right">کۆنتڕۆڵی بۆت</h3>
+                <div class="space-y-4">
+                    <button class="w-full py-4 rounded-2xl bg-cyan-500 text-black font-black hover:scale-105 transition-all">START BOT</button>
+                    <button class="w-full py-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-500 font-bold hover:bg-red-500 hover:text-white transition-all">EMERGENCY STOP</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-12 lg:col-span-9 space-y-6">
+            <div class="chart-container glass">
+                <div id="tradingview_widget" class="h-full"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "BINANCE:BTCUSDT",
+                    "interval": "60",
+                    "timezone": "Etc/UTC",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "hide_top_toolbar": true,
+                    "container_id": "tradingview_widget"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
